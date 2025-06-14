@@ -46,7 +46,7 @@ To get a copy of this project up and running on your local machine:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [Your Repo Link Here - Coming Soon!]
+    git clone https://github.com/MushfiqPlabon/practice-NeonBar.git
     ```
 2.  **Navigate to the project directory:**
     ```bash
@@ -62,7 +62,7 @@ To get a copy of this project up and running on your local machine:
 
 ## Live Demo
 
-Experience **The Neon Bar** live here: [Live Demo Link - Coming Soon!]
+Experience **The Neon Bar** live here: [https://mushfiqplabon.github.io/practice-NeonBar/]
 
 ---
 
