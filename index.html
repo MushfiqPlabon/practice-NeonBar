@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Neon Bar 🍸✨</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlalDLnCVY88k4S3pGk4v9Q8k2z2+o0v7v6p5L4iR5D8E4w5J5P5N5N5M5W5V5U5S5T5R5P5O5Q5R5S5T5U5V5W5X5Y5Z5A5B5C5D5E5F5G5H5I5J5K5L5M5N5O5P5Q5R5S5T5U5V5W5X5Y5Z5A5B5C5D5E5F5G5H5I5J5K5L5M5N5O5P5Q5R5S5T5U5V5W5X5Y5Z5A5B5C5D5E5F5G5H5I5J5K5L5M5N5O5P5Q5R5S5T5U5V5W5X5Y5Z5"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="decor-light decor-light-1"></div>
+    <div class="decor-light decor-light-2"></div>
+    <div class="decor-light decor-light-3"></div>
+
+    <div class="header">
+        <h1 class="main-title">The Neon Bar <i class="fas fa-glass-martini-alt"></i> <span class="emoji">🥂</span></h1>
+        <p class="tagline">Your glowing guide to exquisite concoctions <span class="emoji">✨</span></p>
+        <div class="search-area">
+            <input type="text" id="search-input" class="search-input" placeholder="Find your glow... 💡">
+            <button id="search-button" class="search-button">Ignite Search <i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div class="products-section glassmorphic-card">
+            <h2 class="section-title">Explore Elixirs <i class="fas fa-flask"></i> <span class="emoji">🧪</span></h2>
+            <div id="product-container" class="product-grid">
+            </div>
+        </div>
+
+        <div class="cart-section glassmorphic-card">
+            <h2 class="section-title">Your Group: <span id="count" class="cart-count">0</span> <i
+                    class="fas fa-users"></i> <span class="emoji">👯‍♀️</span></h2>
+            <div id="cart-main-container" class="cart-items-list">
+                <div class="cart-list-header">
+                    <span class="cart-header-sl">#</span>
+                    <span class="cart-header-img">Image</span>
+                    <span class="cart-header-name">Concoction</span>
+                </div>
+            </div>
+            <p class="cart-tip"><i class="fas fa-info-circle"></i> Max 7 drinks for the perfect party mix! <span
+                    class="emoji">🎉</span></p>
+        </div>
+    </div>
+
+    <div id="drinkDetailsModal" class="modal-backdrop hidden">
+        <div class="modal-content glassmorphic-modal">
+            <button class="modal-close-button"><i class="fas fa-times"></i></button>
+            <h3 id="drinkDetailsModalLabel" class="modal-title"></h3>
+            <div class="modal-body-content">
+                <div class="modal-image-wrapper">
+                    <img id="modal-drink-img" src="" alt="Drink Image">
+                </div>
+                <div class="modal-details-text">
+                    <p><strong>Category:</strong> <span id="modal-drink-category"><i class="fas fa-tag"></i></span></p>
+                    <p><strong>Glass Type:</strong> <span id="modal-drink-glass"><i
+                                class="fas fa-wine-glass-alt"></i></span></p>
+                    <p><strong>Instructions:</strong> <span id="modal-drink-instructions"></span> <i
+                            class="fas fa-clipboard-list"></i></p>
+                    <p><strong>Ingredients:</strong> <span class="emoji">🌿</span></p>
+                    <ul id="modal-drink-ingredients" class="ingredients-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer-text">
+                <p>Enjoy your drink responsibly! <span class="emoji">😊</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1122 @@
+/* Font Imports - MUST be at the very top of your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:wght@400;700&display=swap');
+
+/* Neon Color Variables - Expanded Palette */
+:root {
+    --neon-blue: #00e0ff;
+    --neon-purple: #ae00ff;
+    --neon-green: #00ff66;
+    --neon-red: #ff0055;
+    --neon-orange: #ffaa00;
+    --neon-pink: #ff0077;
+    --neon-yellow: #ffee00;
+    --dark-bg-color: #0d0d1a;
+    /* Even deeper, slightly purplish dark */
+    --light-bg-transparent: rgba(255, 255, 255, 0.08);
+    /* More transparent for glassmorphism */
+    --dark-bg-transparent: rgba(0, 0, 0, 0.4);
+    /* Base for blurred elements, very transparent */
+    --modal-bg-transparent: rgba(0, 0, 0, 0.6);
+    /* Slightly less transparent for modal content */
+    --border-alpha: rgba(255, 255, 255, 0.15);
+    /* Slightly stronger border for definition */
+    --roundness: 25px;
+    /* Define a global roundness value */
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* General body font */
+    background: linear-gradient(135deg, #0a0a15, #000000, #100a15);
+    /* Subtle gradient for depth */
+    color: #fff;
+    /* Default text color */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* For background decorations */
+}
+
+/* Night Life Decorations - Background Moving Lights */
+.decor-light {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Increased blur for soft glow */
+    opacity: 0.4;
+    /* More transparent */
+    z-index: -1;
+    /* Send to back */
+    animation: pulse-light 10s infinite alternate ease-in-out;
+}
+
+.decor-light-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--neon-blue) 0%, rgba(0, 224, 255, 0) 70%);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.decor-light-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--neon-purple) 0%, rgba(174, 0, 255, 0) 70%);
+    bottom: 5%;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+.decor-light-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, var(--neon-green) 0%, rgba(0, 255, 102, 0) 70%);
+    top: 60%;
+    left: 20%;
+    animation-delay: 6s;
+}
+
+@keyframes pulse-light {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.4;
+    }
+
+    25% {
+        transform: translate(100px, 50px) scale(1.1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50px, 100px) scale(0.9);
+        opacity: 0.3;
+    }
+
+    75% {
+        transform: translate(70px, -30px) scale(1.2);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.4;
+    }
+}
+
+
+/* General Glassmorphism Style */
+.glassmorphic-card {
+    background: var(--dark-bg-transparent);
+    /* More transparent */
+    backdrop-filter: blur(25px);
+    /* Increased blur */
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border-alpha);
+    /* More defined transparent border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    /* Stronger shadow for depth */
+    border-radius: var(--roundness);
+    /* Apply global roundness */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transitions */
+}
+
+/* Header */
+.header {
+    /* @extend .glassmorphic-card; This is not valid CSS syntax, using properties directly */
+    background: var(--dark-bg-transparent);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border-alpha);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+    border-bottom-left-radius: var(--roundness);
+    /* Full roundness to bottom corners */
+    border-bottom-right-radius: var(--roundness);
+    border-top-left-radius: 0;
+    /* Keep top flat if desired for header */
+    border-top-right-radius: 0;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0, 224, 255, 0.4);
+    /* More vibrant bottom border */
+}
+
+.main-title {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 4.5em;
+    /* Slightly larger title */
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    /* More spaced out */
+    animation: main-title-glow 2s infinite alternate;
+}
+
+.main-title .fas,
+.main-title .emoji {
+    /* Styling for icons and emojis in title */
+    font-size: 0.8em;
+    vertical-align: middle;
+    margin: 0 8px;
+    /* Space out from text */
+    color: var(--neon-pink);
+    /* Use pink for main title decor */
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+}
+
+.tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.tagline .emoji {
+    font-size: 1.1em;
+    vertical-align: middle;
+    margin-left: 5px;
+    filter: saturate(150%) brightness(120%);
+    /* Make emojis pop */
+}
+
+
+@keyframes main-title-glow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px var(--neon-purple),
+            0 0 20px var(--neon-purple),
+            0 0 40px var(--neon-purple),
+            0 0 80px var(--neon-purple);
+    }
+
+    50% {
+        text-shadow:
+            0 0 5px var(--neon-blue),
+            0 0 15px var(--neon-blue),
+            0 0 30px var(--neon-blue),
+            0 0 60px var(--neon-blue);
+    }
+}
+
+/* Search Area */
+.search-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+    /* Increased gap */
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.search-input {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--light-bg-transparent);
+    /* More transparent */
+    border: 2px solid rgba(0, 224, 255, 0.6);
+    /* Stronger transparent border */
+    padding: 15px 25px;
+    border-radius: var(--roundness);
+    /* Apply global roundness */
+    color: #fff;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 450px;
+    /* Slightly wider */
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
+    /* Stronger glow */
+    transition: all 0.4s ease;
+    /* Smoother transition */
+    margin-bottom: 10px;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    /* Brighter placeholder */
+}
+
+.search-input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 30px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+    /* Inner glow on focus */
+    background: rgba(255, 255, 255, 0.15);
+    /* Slightly less transparent on focus */
+}
+
+.search-button {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    /* Gradient button */
+    border: none;
+    padding: 15px 35px;
+    /* Increased padding */
+    border-radius: var(--roundness);
+    /* Apply global roundness */
+    color: #fff;
+    /* White text for contrast */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    /* Smoother transition */
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.7);
+    /* Stronger glow */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Increased gap for icon */
+    width: 100%;
+    max-width: 250px;
+    /* Wider button */
+}
+
+.search-button:hover {
+    background: linear-gradient(45deg, #00f0ff, #c200ff);
+    /* Brighter gradient on hover */
+    box-shadow: 0 0 30px #00f0ff, 0 0 40px #c200ff;
+    /* More intense dual glow */
+    transform: translateY(-3px) scale(1.02);
+    /* More pronounced lift */
+    color: #000;
+    /* Dark text on hover for contrast */
+}
+
+.search-button .fas {
+    color: #fff;
+    /* Icon color on button */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.search-button:hover .fas {
+    color: #000;
+    /* Dark icon on hover */
+    text-shadow: none;
+}
+
+
+/* Main Layout */
+.main-layout {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1500px;
+    /* Slightly wider max-width */
+    margin: 30px auto;
+}
+
+/* Responsive Main Layout */
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        /* Slightly more padding */
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3em;
+        letter-spacing: 2px;
+    }
+
+    .tagline {
+        font-size: 1em;
+    }
+
+    .search-input,
+    .search-button {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 20px 10px;
+    }
+
+    .main-title {
+        font-size: 2.2em;
+        letter-spacing: 1px;
+    }
+
+    .main-title .fas,
+    .main-title .emoji {
+        font-size: 0.7em;
+        margin: 0 5px;
+    }
+
+    .search-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .search-input {
+        margin-bottom: 0;
+    }
+
+    .main-layout {
+        padding: 15px;
+    }
+
+    .products-section,
+    .cart-section {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Sections (now use glassmorphic-card) */
+.products-section,
+.cart-section {
+    /* @extend .glassmorphic-card; Not valid CSS syntax, using properties directly */
+    background: var(--dark-bg-transparent);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border-alpha);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    border-radius: var(--roundness);
+    transition: all 0.3s ease-in-out;
+    padding: 30px;
+}
+
+.section-title {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 2.5em;
+    /* Larger section titles */
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+    text-shadow:
+        0 0 8px var(--neon-green),
+        0 0 15px var(--neon-green);
+}
+
+.section-title .fas,
+.section-title .emoji {
+    /* Icons and emojis in section titles */
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green), 0 0 15px var(--neon-green);
+    margin-left: 10px;
+    font-size: 0.9em;
+    vertical-align: middle;
+}
+
+.cart-section .section-title {
+    text-shadow:
+        0 0 8px var(--neon-orange),
+        0 0 15px var(--neon-orange);
+}
+
+.cart-section .section-title .fas,
+.cart-section .section-title .emoji {
+    color: var(--neon-orange);
+    text-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange);
+}
+
+.cart-count {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.3em;
+    /* Slightly larger count */
+    color: var(--neon-orange);
+    text-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
+    animation: pulse-glow 1.5s infinite alternate;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+.cart-tip {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.cart-tip .fas,
+.cart-tip .emoji {
+    color: var(--neon-yellow);
+    /* Tip icon color */
+    margin-right: 5px;
+}
+
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Slightly larger min-width for cards */
+    gap: 35px;
+    /* Increased gap */
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Product Card */
+.product-card {
+    background: var(--light-bg-transparent);
+    /* More transparent */
+    border-radius: var(--roundness);
+    /* Apply global roundness */
+    padding: 25px;
+    /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    border: 1px solid var(--border-alpha);
+    position: relative;
+    /* For potential hover effects */
+}
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    /* More pronounced lift and scale */
+    box-shadow: 0 0 35px var(--neon-blue), 0 0 50px var(--neon-purple);
+    /* Dual intense glow */
+    border-color: var(--neon-blue);
+    /* Border glows too */
+}
+
+.product-img {
+    width: 140px;
+    /* Slightly larger images */
+    height: 140px;
+    object-fit: contain;
+    border-radius: 50%;
+    /* Make images circular */
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    /* Thicker transparent border */
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    /* Enhanced glow around image */
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-img {
+    border-color: var(--neon-green);
+    /* Image border glows on hover */
+    box-shadow: 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
+}
+
+
+.product-info {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.product-title {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.8em;
+    /* Larger product titles */
+    color: #fff;
+    margin-bottom: 10px;
+    text-shadow:
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green),
+        0 0 20px var(--neon-green);
+    /* Stronger neon glow */
+}
+
+.product-category,
+.product-glass,
+.product-instructions {
+    font-size: 1em;
+    /* Slightly larger text */
+    color: rgba(255, 255, 255, 0.8);
+    /* Brighter text */
+    margin-bottom: 8px;
+    /* More spacing */
+}
+
+.product-category span,
+.product-glass span {
+    color: var(--neon-yellow);
+    /* Specific neon color for values */
+    text-shadow: 0 0 5px var(--neon-yellow);
+    font-weight: bold;
+}
+
+.product-category .fas,
+.product-glass .fas {
+    color: var(--neon-pink);
+    /* Icon colors for categories/glasses */
+    margin-right: 5px;
+}
+
+.product-actions {
+    display: flex;
+    gap: 15px;
+    /* Increased gap for buttons */
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.action-button {
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(0, 224, 255, 0.2);
+    /* More transparent background */
+    border: 1px solid var(--neon-blue);
+    color: #fff;
+    padding: 12px 25px;
+    /* More padding */
+    border-radius: var(--roundness);
+    /* Apply global roundness */
+    cursor: pointer;
+    font-size: 0.95em;
+    /* Slightly larger font */
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    /* More spacing */
+    transition: all 0.4s ease;
+    text-shadow: 0 0 8px var(--neon-blue);
+    /* Stronger text glow */
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Increased icon gap */
+    min-width: 48px;
+    /* Ensure larger touch target */
+    min-height: 48px;
+}
+
+.action-button:hover {
+    background: var(--neon-blue);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-purple);
+    /* Dual intense glow */
+    text-shadow: none;
+    transform: translateY(-2px);
+}
+
+.action-button .fas {
+    font-size: 1.1em;
+    /* Slightly larger icons in buttons */
+    text-shadow: none;
+}
+
+
+/* Cart Items List */
+.cart-items-list {
+    margin-top: 25px;
+    /* More margin */
+}
+
+.cart-list-header {
+    display: grid;
+    grid-template-columns: 0.1fr 0.3fr 0.6fr;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    /* Thicker separator */
+    margin-bottom: 18px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    /* Brighter text */
+    text-shadow: 0 0 8px var(--neon-orange);
+    /* Stronger glow */
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.1em;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 0.1fr 0.3fr 0.6fr;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 0;
+    /* More vertical padding */
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+    /* More visible dashed line */
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-sl {
+    font-family: 'Electrolize', sans-serif;
+    font-weight: bold;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px var(--neon-orange);
+    font-size: 1.1em;
+}
+
+.cart-item-img {
+    width: 45px;
+    /* Slightly larger cart images */
+    height: 45px;
+    object-fit: contain;
+    border-radius: 50%;
+    /* Circular images */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cart-item-name {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    text-shadow: 0 0 5px var(--neon-orange);
+    font-size: 1em;
+    /* Standard size for readability */
+}
+
+
+/* Modal Backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    /* Darker, almost opaque backdrop */
+    backdrop-filter: blur(12px);
+    /* Slightly less blur for backdrop */
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-backdrop.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Modal Content */
+.glassmorphic-modal {
+    background: var(--modal-bg-transparent);
+    /* Stronger transparency for modal content */
+    border-radius: var(--roundness);
+    /* Apply global roundness */
+    padding: 35px;
+    /* More padding */
+    width: 100%;
+    max-width: 750px;
+    /* Slightly wider modal */
+    position: relative;
+    box-shadow: 0 0 40px rgba(0, 224, 255, 0.8), 0 0 80px rgba(174, 0, 255, 0.6);
+    /* More intense dual color glow */
+    border: 2px solid var(--neon-blue);
+    /* Thicker border */
+    transform: scale(1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    /* Make modal content scrollable on mobile */
+    max-height: 95vh;
+    /* Limit modal height to 95% of viewport height */
+    display: flex;
+    flex-direction: column;
+    /* Allow content to stack and scroll */
+    overflow: hidden;
+    /* Hide overflow initially, let modal-body-scroll handle it */
+}
+
+.modal-backdrop.hidden .glassmorphic-modal {
+    transform: scale(0.9);
+    /* More pronounced hide animation */
+}
+
+/* Modal Body Scrollable Area */
+.modal-body-content {
+    display: flex;
+    gap: 35px;
+    /* Increased gap */
+    align-items: flex-start;
+    /* Align to top for better text flow */
+    margin-bottom: 25px;
+    /* Add margin below body content */
+
+    /* Ensure this section scrolls */
+    flex-grow: 1;
+    /* Allow content to take available space */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    padding-right: 15px;
+    /* Add padding for scrollbar, prevent content touching */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
+
+    /* Smooth scrolling for high refresh rate displays */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* For native-like scrolling on iOS */
+}
+
+/* Modal Close Button */
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: 3px solid var(--neon-red);
+    /* Stronger border */
+    color: var(--neon-red);
+    font-size: 2.8em;
+    cursor: pointer;
+    text-shadow: 0 0 12px var(--neon-red), 0 0 25px var(--neon-red);
+    /* Even stronger glow */
+    transition: text-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease, color 0.3s ease;
+    min-width: 55px;
+    /* Larger touch target */
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Circular */
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+    /* Ensure it's above modal content */
+}
+
+.modal-close-button:hover {
+    text-shadow: 0 0 25px var(--neon-red), 0 0 40px var(--neon-red);
+    transform: scale(1.1);
+    /* More pronounced scale on hover */
+    border-color: #ff3366;
+    color: #ffcccc;
+    /* Lighter red on hover */
+}
+
+.modal-title {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 2.8em;
+    /* Larger modal title */
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow:
+        0 0 10px var(--neon-purple),
+        0 0 20px var(--neon-purple),
+        0 0 30px var(--neon-purple);
+    /* Stronger glow */
+}
+
+@media (max-width: 768px) {
+    .modal-body-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding-right: 0;
+        /* Remove padding-right for scrollbar on column layout */
+    }
+
+    .glassmorphic-modal {
+        padding: 30px;
+    }
+
+    .modal-image-wrapper {
+        width: 180px;
+        /* Still a decent size */
+        height: 180px;
+        margin: 0 auto;
+        /* Center image on small screens */
+    }
+
+    .modal-title {
+        font-size: 2.2em;
+    }
+
+    .modal-close-button {
+        font-size: 2.5em;
+        min-width: 50px;
+        min-height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-title {
+        font-size: 2em;
+    }
+
+    .modal-image-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .modal-details-text p,
+    .ingredients-list li {
+        font-size: 0.9em;
+        /* Slightly smaller text for very small screens */
+    }
+
+    .glassmorphic-modal {
+        padding: 25px;
+    }
+
+    .modal-close-button {
+        font-size: 2.2em;
+        min-width: 45px;
+        min-height: 45px;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+
+.modal-image-wrapper {
+    flex-shrink: 0;
+    width: 200px;
+    /* Larger modal image */
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    /* Thicker border */
+    border-radius: var(--roundness);
+    /* Rounded wrapper */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    /* Stronger glow */
+}
+
+.modal-image-wrapper img {
+    max-width: 90%;
+    /* Image slightly smaller than wrapper to show border */
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 15px;
+    /* Rounded image inside */
+}
+
+.modal-details-text p {
+    font-size: 1.15em;
+    /* Slightly larger text */
+    margin-bottom: 10px;
+    /* More spacing */
+    color: rgba(255, 255, 255, 0.9);
+    /* Brighter text */
+}
+
+.modal-details-text p strong {
+    color: var(--neon-yellow);
+    /* Bold text in yellow neon */
+    text-shadow: 0 0 5px var(--neon-yellow);
+}
+
+.modal-details-text p span {
+    text-shadow: 0 0 3px var(--neon-blue);
+    font-weight: bold;
+    color: var(--neon-blue);
+}
+
+.modal-details-text .fas,
+.modal-details-text .emoji {
+    color: var(--neon-pink);
+    /* Icons/emojis in modal text */
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+
+
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* Wider columns for ingredients */
+    gap: 12px;
+    /* Increased gap */
+}
+
+@media (max-width: 480px) {
+    .ingredients-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ingredients-list li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05em;
+    /* Slightly larger */
+    color: var(--neon-green);
+    text-shadow: 0 0 6px var(--neon-green);
+    /* Stronger glow */
+    border: 1px dashed rgba(0, 255, 102, 0.4);
+    /* More visible dashed border */
+    padding: 10px 15px;
+    /* More padding */
+    border-radius: 10px;
+    /* More rounded */
+    background: rgba(0, 255, 102, 0.08);
+    /* More transparent background */
+    transition: all 0.2s ease;
+}
+
+.ingredients-list li:hover {
+    background: rgba(0, 255, 102, 0.15);
+    /* Slightly brighter on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+.modal-footer-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    /* Ensure footer text doesn't scroll with content but stays at bottom of modal */
+    flex-shrink: 0;
+    /* Prevent it from shrinking */
+    padding-top: 15px;
+    /* Space from scrolling content */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-footer-text .emoji {
+    filter: saturate(150%) brightness(120%);
+    margin-left: 5px;
+}
+
+
+.neon-text-alert {
+    color: var(--neon-red);
+    text-align: center;
+    font-size: 1.4em;
+    /* Larger alert text */
+    padding: 30px;
+    /* More padding */
+    text-shadow: 0 0 12px var(--neon-red), 0 0 20px var(--neon-red);
+    /* Stronger glow */
+    animation: flicker-red 1s infinite alternate;
+    border: 2px dashed var(--neon-red);
+    /* Dashed border for urgency */
+    border-radius: var(--roundness);
+    /* Rounded corners */
+    background: rgba(255, 0, 85, 0.1);
+    /* Transparent red background */
+    margin: 30px auto;
+    max-width: 700px;
+}
+
+@keyframes flicker-red {
+
+    0%,
+    100% {
+        text-shadow: 0 0 12px var(--neon-red), 0 0 20px var(--neon-red);
+        opacity: 1;
+    }
+
+    50% {
+        text-shadow: none;
+        opacity: 0.7;
+    }
+}
+
+/* Scrollbar Styling - More vibrant */
+/* For the main content scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    /* Slightly wider scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    /* More transparent track */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--neon-blue), var(--neon-purple));
+    /* Gradient thumb */
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--neon-blue);
+    /* Stronger glow */
+    border: 2px solid rgba(0, 224, 255, 0.3);
+    /* More defined border */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #00f0ff, #c200ff);
+    /* Brighter gradient on hover */
+    box-shadow: 0 0 20px #00f0ff;
+}
+
+/* Specific scrollbar for the modal-body-content */
+.modal-body-content::-webkit-scrollbar {
+    width: 8px;
+    /* Thinner scrollbar for modal */
+}
+
+.modal-body-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    /* Lighter track for modal */
+}
+
+.modal-body-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--neon-green), var(--neon-yellow));
+    /* Green-yellow gradient for modal scrollbar */
+    box-shadow: 0 0 8px var(--neon-green);
+    border: 1px solid rgba(0, 255, 102, 0.2);
+}
+
+.modal-body-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #00ff88, #ffff00);
+    box-shadow: 0 0 15px #00ff88;
+}
